@@ -34,8 +34,8 @@ PUT: /api/admin/jobs/:id
 4. get data user by id - user
 5. get jobs data - all
 6. get jobs data by id - all
-7. get data admin - admin
-8. get data admin by id - admin
+7. get data admin - admin (Sandi Loka)
+8. get data admin by id - admin (Sandi Loka)
 9. create data - admin (Sandi Loka)
 10. delete data - admin (Sandi Loka)
 11. update data - admin (Sandi Loka)
