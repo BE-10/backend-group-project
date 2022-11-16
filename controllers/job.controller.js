@@ -1,4 +1,4 @@
-const { job } = require("../models");
+const { jobs } = require("../models");
 
 
 /* -------- Get Job -------- */
@@ -7,7 +7,7 @@ const handleGetJob = async(req, res) => {
 
     try {
 
-        const getJobData = await job.findAll();
+        const getJobData = await jobs.findAll();
 
         res.status(200).send({
             status: true,
@@ -36,7 +36,7 @@ const handleGetJobById = async(req, res) => {
 
         const { id } = req.params;
 
-        const getJobDataById = await job.findOne({
+        const getJobDataById = await jobs.findOne({
             where: { id }
         });
 
@@ -69,7 +69,7 @@ const handleCreateJob = async (req, res) => {
 
         const { job_name } = req.body;
 
-        const createdJob = await job.create({ job_name });
+        const createdJob = await jobs.create({ job_name });
 
         res.status(201).send({
             status: true,
@@ -100,12 +100,12 @@ const handleUpdateJob = async(req, res) => {
 
         const { job_name } = req.body;
 
-        const getJobDataById = await job.findOne({
+        const getJobDataById = await jobs.findOne({
             where: { id }
         });
 
         if (getJobDataById.id == id) {
-            const updatedJob = await job.update({ 
+            const updatedJob = await jobs.update({ 
                 job_name 
             }, {
                 where: { id }
@@ -139,12 +139,12 @@ const handleDeleteJob = async(req, res) => {
 
         const { id } = req.params
 
-        const getJobDataById = await job.findOne({
+        const getJobDataById = await jobs.findOne({
             where: { id }
         });
 
         if (getJobDataById.id == id) {
-            const deletedJob = await job.destroy({
+            const deletedJob = await jobs.destroy({
                 where: { id }
             });
 
