@@ -14,7 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   jobs.init({
-    job_name: DataTypes.STRING
+    company_id: DataTypes.INTEGER,
+    salary: DataTypes.STRING,
+    image_path: DataTypes.TEXT,
+    title: DataTypes.STRING,
+    title_desc: DataTypes.TEXT,
+    content_title: DataTypes.STRING,
+    content_desc: DataTypes.TEXT,
+    is_available: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'jobs',

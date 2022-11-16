@@ -9,8 +9,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      job_name: {
+      company_id: {
+        type: Sequelize.INTEGER
+      },
+      salary: {
         type: Sequelize.STRING
+      },
+      image_path: {
+        type: Sequelize.TEXT
+      },
+      title: {
+        type: Sequelize.STRING
+      },
+      title_desc: {
+        type: Sequelize.TEXT
+      },
+      content_title: {
+        type: Sequelize.STRING
+      },
+      content_desc: {
+        type: Sequelize.TEXT
+      },
+      is_available: {
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
