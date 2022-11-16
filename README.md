@@ -22,7 +22,11 @@ GET: /api/users
 GET: /api/users/:id
 GET: /api/admin/:id
 PUT: /api/users/profile/:id
-PUT: /api/admin/profile/:id
+POST: /api/admin/company-profile
+PUT: /api/admin/company-profile/:id
+DELETE: /api/admin/company-profile/:id
+GET: /api/admin/company-profile/:id
+GET: /api/admin/company-profile
 POST: /api/admin/jobs 
 DELETE: /api/admin/jobs/:id 
 PUT: /api/admin/jobs/:id 
@@ -39,4 +43,8 @@ PUT: /api/admin/jobs/:id
 9. create data - admin (Sandi Loka)
 10. delete data - admin (Sandi Loka)
 11. update data - admin (Sandi Loka)
-12. update profile - admin (Sandi Loka)
+12. create company profile - admin (Sandi Loka)
+13. update company profile - admin (Sandi Loka)
+14. delete company profile - admin (Sandi Loka)
+15. get company profile - admin (Sandi Loka)
+15. get company profile by id - admin (Sandi Loka)
