@@ -18,7 +18,7 @@ const handleRegister = async(req, res) => {
             where: { email }
         });
 
-        if (!getUserByEmail) {
+        if (getUserByEmail) {
             res.status(404).send({
                 status: false,
                 message: "Email sudah digunakan!",
