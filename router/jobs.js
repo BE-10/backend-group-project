@@ -7,7 +7,7 @@ const middlewares = [express.json()];
 
 router.use(middlewares);
 
-router.get("/", getAllJobs);
+router.get("/:id/:limit", getAllJobs);
 router.get("/:id", getJobById);
 
 module.exports = router;

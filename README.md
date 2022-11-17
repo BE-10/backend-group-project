@@ -17,9 +17,9 @@ endpoint yg harus dibuat:
 POST: /api/register
 POST: /api/login
 
-GET: /api/jobs (Vinsensius Reinard)
+GET: /api/jobs/:id/:limit (Vinsensius Reinard) all jobs
 GET: /api/jobs/:id (Vinsensius Reinard)
-GET: /api/users (Vinsensius Reinard)
+GET: /api/users/:id/:limit (Vinsensius Reinard) all users
 GET: /api/users/:id (Vinsensius Reinard)
 
 GET: /api/admin/:id (Sandi Loka)

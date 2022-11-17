@@ -7,23 +7,17 @@ module.exports = {
 		/*
 		 *{
 		 *  token: "token",
-		 *  uuid: middleware-token-payload,
-		 *  data: {
-		 *    startId: "20",
-		 *    limit: "20"
-		 *  }
+		 *  uuid: middleware-token-payload
 		 *}
 		 */
-		const reqData = req.body.data;
-		const limit = reqData.limit;
-		const startId = reqData.startId;
+		const { id, limit } = req.params;
 
 		const payload = await job.findAll({
 			where: {
 				available: true,
 				limit,
 				id: {
-					[Op.gt]: startId,
+					[Op.gt]: id,
 				},
 			},
 		});
@@ -35,13 +29,9 @@ module.exports = {
 		 *{
 		 *  token: "token",
 		 *  uuid: middleware-token-payload,
-		 *  data: {
-		 *    id: 20
-		 *  }
 		 *}
 		 */
-		const reqData = req.body.data;
-		const id = reqData.id;
+		const { id } = req.params;
 
 		const payload = await job.findAll({
 			where: {
