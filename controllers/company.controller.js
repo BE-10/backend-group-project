@@ -1,4 +1,111 @@
-const { profile_companies } = require("../models");
+const { profile_companies, users } = require("../models");
+
+
+/* -------- Get Profile Company -------- */
+
+const handleGetProfileCompany = async(req, res, next) => {
+
+    try {
+        
+        const getProfileCompany = await profile_companies.findAll({
+            include: [{
+                model: users,
+                attributes: ["email"]
+            }]
+        });
+
+        res.status(200).send({
+            status: true,
+            message: 'Data profile perusahaan berhasil didapatkan!',
+            data: getProfileCompany,
+        });
+
+    } catch (err) {
+        res.status(500).send({
+            status: false,
+            message: err.message,
+            data: null,
+        });
+    }
+
+};
+
+/* -------- End Get Profile Company -------- */
+
+
+/* -------- Get Profile Company By Id -------- */
+
+const handleGetProfileCompanyById = async(req, res, next) => {
+
+    try {
+        
+        const { id } = req.params;
+
+        const getProfileCompanyById = await profile_companies.findOne({
+            where: { 
+                id 
+            },
+            include: [{
+                model: users,
+                attributes: ["email"]
+            }]
+        });
+
+        res.status(200).send({
+            status: true,
+            message: 'Data profile perusahaan berhasil didapatkan!',
+            data: getProfileCompanyById,
+        });
+
+    } catch (err) {
+        res.status(500).send({
+            status: false,
+            message: err.message,
+            data: null,
+        });
+    }
+
+};
+
+/* -------- End Get Profile Company By Id -------- */
+
+
+/* -------- Get Profile Company By User Id -------- */
+
+const handleGetProfileCompanyByUserId = async(req, res, next) => {
+
+    try {
+        
+        const { id } = req.params;
+
+        const getProfileCompanyByUserId = await profile_companies.findAll({
+            where: { 
+                user_id: id 
+            },
+            include: [{
+                model: users,
+                attributes: ["email"]
+            }]
+        });
+
+        res.status(200).send({
+            status: true,
+            message: 'Data profile perusahaan berhasil didapatkan!',
+            data: getProfileCompanyByUserId,
+        });
+
+    } catch (err) {
+        res.status(500).send({
+            status: false,
+            message: err.message,
+            data: null,
+        });
+    }
+
+};
+
+/* -------- End Get Profile Company By User Id -------- */
+
 
 /* -------- Create Profile Company -------- */
 
@@ -118,6 +225,9 @@ const handleDeleteProfileCompany = async(req, res, next) => {
 /* -------- End Delete Profile Company -------- */
 
 module.exports = { 
+    handleGetProfileCompany,
+    handleGetProfileCompanyById,
+    handleGetProfileCompanyByUserId,
     handleCreateProfileCompany,
     handleUpdateProfileCompany,
     handleDeleteProfileCompany 
