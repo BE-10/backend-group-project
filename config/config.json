@@ -1,22 +1,22 @@
 {
   "development": {
     "username": "root",
-    "password": "admin",
-    "database": "db_be_group_project",
+    "password": null,
+    "database": "backend_group_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-    "database": "database_test",
+    "database": "backend_group_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-    "database": "database_production",
+    "database": "backend_group_project",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

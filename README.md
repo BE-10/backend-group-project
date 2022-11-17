@@ -24,10 +24,14 @@ GET: /api/users/:id (Vinsensius Reinard)
 
 GET: /api/admin/:id (Sandi Loka)
 PUT: /api/users/profile/:id (Sandi Loka)
-PUT: /api/admin/profile/:id (Sandi Loka)
-POST: /api/admin/jobs (Sandi Loka)
-DELETE: /api/admin/jobs/:id (Sandi Loka)
-PUT: /api/admin/jobs/:id (Sandi Loka)
+POST: /api/admin/company-profile 
+PUT: /api/admin/company-profile/:id 
+DELETE: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile 
+POST: /api/admin/jobs 
+DELETE: /api/admin/jobs/:id 
+PUT: /api/admin/jobs/:id 
 ```
 
 1. register 
@@ -41,4 +45,8 @@ PUT: /api/admin/jobs/:id (Sandi Loka)
 9. create data - admin (Sandi Loka)
 10. delete data - admin (Sandi Loka)
 11. update data - admin (Sandi Loka)
-12. update profile - admin (Sandi Loka)
+12. create company profile - admin (Sandi Loka)
+13. update company profile - admin (Sandi Loka)
+14. delete company profile - admin (Sandi Loka)
+15. get company profile - admin (Sandi Loka)
+15. get company profile by id - admin (Sandi Loka)
