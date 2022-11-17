@@ -1,44 +1,56 @@
 const db = require("../models");
+const { Op } = require("sequelize");
 
 const job = db.Job;
 
 module.exports = {
 	getAllJobs: async (req, res) => {
 		/*
-		 *{
-		 *  token: "token",
-		 *  uuid: middleware-token-payload
-		 *}
+		 * params = /:id/:limit
+		 * {
+		 *   token: "token",
+		 *   uuid: middleware-token-payload
+		 * }
 		 */
-		const { id, limit } = req.params;
+		let { offset, limit } = req.params;
+		limit = parseInt(limit);
+		offset = parseInt(offset);
 
-		const payload = await job.findAll({
-			where: {
-				available: true,
+		try {
+			console.log(req.params);
+			const payload = await job.findAll({
+				offset,
 				limit,
-				id: {
-					[Op.gt]: id,
+				where: {
+					available: 1,
 				},
-			},
-		});
+			});
 
-		res.status(200).res(payload);
+			res.status(200).send(payload);
+		} catch (error) {
+			res.status(500).send(error);
+		}
 	},
 	getJobById: async (req, res) => {
 		/*
-		 *{
-		 *  token: "token",
-		 *  uuid: middleware-token-payload,
-		 *}
+		 * params = /:id/
+		 * {
+		 *   token: "token",
+		 *   uuid: middleware-token-payload,
+		 * }
 		 */
-		const { id } = req.params;
+		try {
+			const { id } = req.params;
 
-		const payload = await job.findAll({
-			where: {
-				id,
-			},
-		});
+			const payload = await job.findOne({
+				where: {
+					id,
+				},
+			});
 
-		res.send(200).send(payload);
+			res.status(200).send(payload);
+		} catch (error) {
+			res.status(500).send(error);
+		}
 	},
 };
