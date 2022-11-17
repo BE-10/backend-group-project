@@ -16,28 +16,30 @@ endpoint yg harus dibuat:
 ```
 POST: /api/register
 POST: /api/login
-GET: /api/jobs
-GET: /api/jobs/:id
-GET: /api/users
-GET: /api/users/:id
-GET: /api/admin/:id
-PUT: /api/users/profile/:id
-POST: /api/admin/company-profile
-PUT: /api/admin/company-profile/:id
-DELETE: /api/admin/company-profile/:id
-GET: /api/admin/company-profile/:id
-GET: /api/admin/company-profile
+
+GET: /api/jobs (Vinsensius Reinard)
+GET: /api/jobs/:id (Vinsensius Reinard)
+GET: /api/users (Vinsensius Reinard)
+GET: /api/users/:id (Vinsensius Reinard)
+
+GET: /api/admin/:id (Sandi Loka)
+PUT: /api/users/profile/:id (Sandi Loka)
+POST: /api/admin/company-profile 
+PUT: /api/admin/company-profile/:id 
+DELETE: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile 
 POST: /api/admin/jobs 
 DELETE: /api/admin/jobs/:id 
 PUT: /api/admin/jobs/:id 
 ```
 
-1. register
-2. login
-3. get data user - user
-4. get data user by id - user
-5. get jobs data - all
-6. get jobs data by id - all
+1. register 
+2. login 
+3. get data user all - user (Vinsensius Reinard)
+4. get data user by id - user (Vinsensius Reinard)
+5. get jobs data all - all (Vinsensius Reinard)
+6. get jobs data by id - all (Vinsensius Reinard)
 7. get data admin - admin (Sandi Loka)
 8. get data admin by id - admin (Sandi Loka)
 9. create data - admin (Sandi Loka)
