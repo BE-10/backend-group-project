@@ -2,36 +2,31 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Jobs', {
+    await queryInterface.createTable('profile_companies', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_perusahaan: {
-        type: Sequelize.INTEGER
+      user_id: {
+        type: Sequelize.INTEGER,
+        reference: {
+          models: "users",
+          key: "id"
+        }
       },
-      gaji: {
-        type: Sequelize.INTEGER
-      },
-      image_path: {
+      company_name: {
         type: Sequelize.STRING
       },
-      nama: {
-        type: Sequelize.STRING
-      },
-      nama_deskripsi: {
+      company_address: {
         type: Sequelize.TEXT
       },
-      konten_judul: {
+      company_contact: {
         type: Sequelize.STRING
       },
-      konten_deskripsi: {
+      data: {
         type: Sequelize.TEXT
-      },
-      available: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -44,6 +39,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Jobs');
+    await queryInterface.dropTable('profile_companies');
   }
 };
