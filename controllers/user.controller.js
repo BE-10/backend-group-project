@@ -1,4 +1,4 @@
-const { users } = require("../models");
+const { users, Profile } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -104,11 +104,18 @@ const getAllUsers = async (req, res) => {
 	let { offset, limit } = req.params;
 	offset = parseInt(offset);
 	limit = parseInt(limit);
+
 	try {
-		const payload = await user.findAll({
+		const data = await user.findAll({
 			offset,
 			limit,
 		});
+
+		const payload = {
+			status: 200,
+			message: `${limit} datas, offset ${offset}`,
+			data,
+		};
 
 		res.status(200).send(payload);
 	} catch (error) {
@@ -131,11 +138,17 @@ const getUserById = async (req, res) => {
 
 	const { id } = req.params;
 	try {
-		const payload = await user.findOne({
+		const data = await user.findOne({
 			where: {
 				id,
 			},
 		});
+
+		const payload = {
+			status: 200,
+			message: `user id: ${id}`,
+			data,
+		};
 
 		res.status(200).send(payload);
 	} catch (error) {
@@ -145,4 +158,78 @@ const getUserById = async (req, res) => {
 };
 /* get user by id */
 
-module.exports = { handleRegister, handleLogin, getAllUsers, getUserById };
+const handlUpdateProfile = async (req, res) => {
+	/* request body
+	 * {
+	 * 	 ...
+	 * 	 data: {
+	 * 				profile: {
+	 * 				nama:"lakj",
+	 * 				kontak:"asldk;jf",
+	 * 				alamat:"asdklf;",
+	 * 				},
+	 * 				users: {
+	 * 				email: "slajd@gmail.com",
+	 * 				password: "lasdjkfasdf",
+	 * 				}
+	 * 			}
+	 *   }
+	 * }
+	 */
+
+	const { id } = req.params;
+	const body = req.body;
+	// id_user: DataTypes.INTEGER,
+	// nama: DataTypes.STRING,
+	// kontak: DataTypes.STRING,
+	// alamat: DataTypes.STRING
+	try {
+		Object.keys(body.data.users).forEach(async (element) => {
+			await users.update(
+				{
+					element: body.data[`${element}`],
+				},
+				{
+					where: {
+						id,
+					},
+				}
+			);
+		});
+
+		Object.keys(body.data.Profile).forEach(async (element) => {
+			await Profile.update(
+				{
+					element: body.data[`${element}`],
+				},
+				{
+					where: {
+						id_user: id,
+					},
+				}
+			);
+		});
+
+		const payload = {
+			status: 202,
+			message: "data successfully updated",
+			data: null,
+		};
+		res.status(201).send(payload);
+	} catch (err) {
+		const payload = {
+			status: 500,
+			message: "something went wrong",
+			data: err,
+		};
+		res.status(500).send(payload);
+	}
+};
+
+module.exports = {
+	handleRegister,
+	handleLogin,
+	getAllUsers,
+	getUserById,
+	handlUpdateProfile,
+};
