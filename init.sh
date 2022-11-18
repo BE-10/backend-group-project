@@ -4,10 +4,10 @@ npm install
 npx sequelize-cli db:create
 
 # model
-# npx sequelize-cli model:generate --name users --attributes email:string,password:string,role:string
-# npx sequelize-cli model:generate --name profile --attributes id_user:integer,name:string,contact:string,address:string
-# npx sequelize-cli model:generate --name profile_companies --attributes user_id:integer,company_name:string,company_address:text,company_contact:string,data:text
-# npx sequelize-cli model:generate --name jobs --attributes company_id:integer,salary:string,image_path:text,title:string,title_desc:text,content_title:string,content_desc:text,is_available:boolean
+# npx sequelize-cli model:generate --name User --attributes email:string,password:string,role:string
+# npx sequelize-cli model:generate --name Profile --attributes id_user:integer,nama:string,kontak:string,alamat:string
+# npx sequelize-cli model:generate --name Company_profile --attributes nama:string,alamat:string,kontak:string,id_user:integer
+# npx sequelize-cli model:generate --name Job --attributes id_perusahaan:integer,gaji:integer,image_path:string,nama:string,nama_deskripsi:text,konten_judul:string,konten_deskripsi:text,available:boolean
 
 # migrate
 npx db:migrate
