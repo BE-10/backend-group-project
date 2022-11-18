@@ -106,7 +106,7 @@ const getAllUsers = async (req, res) => {
 	limit = parseInt(limit);
 
 	try {
-		const data = await user.findAll({
+		const data = await users.findAll({
 			offset,
 			limit,
 		});
@@ -163,59 +163,55 @@ const handlUpdateProfile = async (req, res) => {
 	 * {
 	 * 	 ...
 	 * 	 data: {
-	 * 				profile: {
-	 * 				nama:"lakj",
-	 * 				kontak:"asldk;jf",
-	 * 				alamat:"asdklf;",
-	 * 				},
-	 * 				users: {
-	 * 				email: "slajd@gmail.com",
-	 * 				password: "lasdjkfasdf",
-	 * 				}
-	 * 			}
-	 *   }
+	 * 		  profile: {
+	 * 		  	 nama:"lakj",
+	 * 		  	 kontak:"asldk;jf",
+	 * 		  	 alamat:"asdklf;",
+	 * 		  },
+	 * 		  users: {
+	 * 		  	 email: "slajd@gmail.com",
+	 * 		  	 password: "lasdjkfasdf",
+	 * 		  }
+	 * 		}
 	 * }
 	 */
 
 	const { id } = req.params;
 	const body = req.body;
-	// id_user: DataTypes.INTEGER,
-	// nama: DataTypes.STRING,
-	// kontak: DataTypes.STRING,
-	// alamat: DataTypes.STRING
 	try {
-		Object.keys(body.data.users).forEach(async (element) => {
-			await users.update(
-				{
-					element: body.data[`${element}`],
+		const dataUsers = await users.update(
+			{
+				email: body.data.users.email,
+				password: body.data.users.password,
+			},
+			{
+				where: {
+					id,
 				},
-				{
-					where: {
-						id,
-					},
-				}
-			);
-		});
+			}
+		);
 
-		Object.keys(body.data.Profile).forEach(async (element) => {
-			await Profile.update(
-				{
-					element: body.data[`${element}`],
+		const dataProfiles = await Profile.update(
+			{
+				nama: body.data.profile.nama,
+				kontak: body.data.profile.kontak,
+				alamat: body.data.profile.alamat,
+			},
+			{
+				where: {
+					id,
 				},
-				{
-					where: {
-						id_user: id,
-					},
-				}
-			);
-		});
+			}
+		);
+
+		console.log(dataUsers, dataProfiles);
 
 		const payload = {
 			status: 202,
 			message: "data successfully updated",
 			data: null,
 		};
-		res.status(201).send(payload);
+		res.status(202).send(payload);
 	} catch (err) {
 		const payload = {
 			status: 500,
