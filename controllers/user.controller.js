@@ -158,6 +158,7 @@ const getUserById = async (req, res) => {
 };
 /* get user by id */
 
+/* update profile and users */
 const handlUpdateProfile = async (req, res) => {
 	/* request body
 	 * {
@@ -204,8 +205,6 @@ const handlUpdateProfile = async (req, res) => {
 			}
 		);
 
-		console.log(dataUsers, dataProfiles);
-
 		const payload = {
 			status: 202,
 			message: "data successfully updated",
@@ -221,6 +220,7 @@ const handlUpdateProfile = async (req, res) => {
 		res.status(500).send(payload);
 	}
 };
+/* update profile and users */
 
 module.exports = {
 	handleRegister,
