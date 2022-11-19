@@ -1,52 +1,35 @@
-# Group Project Backend
+# Documentation
 
-proyek untuk menyelesaikan tugas projek webdev skilvul
+## Create Users Profiles
 
-[Kumpul Tugas]()
+- Method : POST
+<br> <br>
+- Endpoint : `/api/users/profile`
+<br> <br>
+- Body :
 
-[Keterangan Tugas]()
-
-[Wireframe](https://whimsical.com/be-group-project-XUMwwdPSKg3taoLq7Z1KSt)
-
-[BRD](https://whimsical.com/brd-job-advertising-be-group-project-F1EDTWnGoc65GesRBBBYve)
-
-[Netlify]()
-
-endpoint yg harus dibuat:
-```
-POST: /api/register
-POST: /api/login
-
-GET: /api/jobs/:id/:limit (Vinsensius Reinard) all jobs
-GET: /api/jobs/:id (Vinsensius Reinard)
-GET: /api/users/:id/:limit (Vinsensius Reinard) all users
-GET: /api/users/:id (Vinsensius Reinard)
-
-GET: /api/admin/:id (Sandi Loka)
-PUT: /api/users/profile/:id (Sandi Loka)
-POST: /api/admin/company-profile 
-PUT: /api/admin/company-profile/:id 
-DELETE: /api/admin/company-profile/:id 
-GET: /api/admin/company-profile/:id 
-GET: /api/admin/company-profile 
-POST: /api/admin/jobs 
-DELETE: /api/admin/jobs/:id 
-PUT: /api/admin/jobs/:id 
+```javascript
+    {
+        "nama": "Jhone Doe",
+        "kontak": "081322022066",
+        "alamat": "Bekasi"
+    }
 ```
 
-1. register 
-2. login 
-3. get data user all - user (Vinsensius Reinard)
-4. get data user by id - user (Vinsensius Reinard)
-5. get jobs data all - all (Vinsensius Reinard)
-6. get jobs data by id - all (Vinsensius Reinard)
-7. get data admin - admin (Sandi Loka)
-8. get data admin by id - admin (Sandi Loka)
-9. create data - admin (Sandi Loka)
-10. delete data - admin (Sandi Loka)
-11. update data - admin (Sandi Loka)
-12. create company profile - admin (Sandi Loka)
-13. update company profile - admin (Sandi Loka)
-14. delete company profile - admin (Sandi Loka)
-15. get company profile - admin (Sandi Loka)
-15. get company profile by id - admin (Sandi Loka)
+- Respon :
+
+```javascript
+    {
+    "status": true,
+    "message": "Profile user berhasil dibuat",
+    "data": {
+        "id": 1,
+        "id_user": 1,
+        "nama": "Jhone Doe",
+        "kontak": "081322022066",
+        "alamat": "Bekasi",
+        "updatedAt": "2022-11-19T14:50:15.487Z",
+        "createdAt": "2022-11-19T14:50:15.487Z"
+    }
+}
+```

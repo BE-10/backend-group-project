@@ -91,73 +91,6 @@ const handleLogin = async (req, res) => {
 };
 /* -------- End Login -------- */
 
-/* get all users */
-const getAllUsers = async (req, res) => {
-	/*
-	 * params = /:id/:limit
-	 * {
-	 *   token: "token",
-	 *   uuid: middleware-token-payload
-	 * }
-	 */
-
-	let { offset, limit } = req.params;
-	offset = parseInt(offset);
-	limit = parseInt(limit);
-
-	try {
-		const data = await user.findAll({
-			offset,
-			limit,
-		});
-
-		const payload = {
-			status: 200,
-			message: `${limit} datas, offset ${offset}`,
-			data,
-		};
-
-		res.status(200).send(payload);
-	} catch (error) {
-		console.log(error);
-		res.status(500).send(error);
-	}
-};
-
-/* get all users end */
-
-/* get user by id */
-const getUserById = async (req, res) => {
-	/*
-	 * params = /:id/
-	 * {
-	 *   token: "token",
-	 *   uuid: middleware-token-payload,
-	 * }
-	 */
-
-	const { id } = req.params;
-	try {
-		const data = await user.findOne({
-			where: {
-				id,
-			},
-		});
-
-		const payload = {
-			status: 200,
-			message: `user id: ${id}`,
-			data,
-		};
-
-		res.status(200).send(payload);
-	} catch (error) {
-		console.log(error);
-		res.status(500).send(error);
-	}
-};
-
-
 
 /* -------- Create Profile Users -------- */
 
@@ -195,89 +128,10 @@ const handlePostProfileUsers = async (req, res, next) => {
 }
 
 
-
 /* -------- End Create Profile Users -------- */
-
-
-
-
-
-/* get user by id */
-
-const handlUpdateProfile = async (req, res) => {
-	/* request body
-	 * {
-	 * 	 ...
-	 * 	 data: {
-	 * 				profile: {
-	 * 				nama:"lakj",
-	 * 				kontak:"asldk;jf",
-	 * 				alamat:"asdklf;",
-	 * 				},
-	 * 				users: {
-	 * 				email: "slajd@gmail.com",
-	 * 				password: "lasdjkfasdf",
-	 * 				}
-	 * 			}
-	 *   }
-	 * }
-	 */
-
-	const { id } = req.params;
-	const body = req.body;
-	// id_user: DataTypes.INTEGER,
-	// nama: DataTypes.STRING,
-	// kontak: DataTypes.STRING,
-	// alamat: DataTypes.STRING
-	try {
-		Object.keys(body.data.users).forEach(async (element) => {
-			await users.update(
-				{
-					element: body.data[`${element}`],
-				},
-				{
-					where: {
-						id,
-					},
-				}
-			);
-		});
-
-		Object.keys(body.data.Profile).forEach(async (element) => {
-			await Profile.update(
-				{
-					element: body.data[`${element}`],
-				},
-				{
-					where: {
-						id_user: id,
-					},
-				}
-			);
-		});
-
-		const payload = {
-			status: 202,
-			message: "data successfully updated",
-			data: null,
-		};
-		res.status(201).send(payload);
-	} catch (err) {
-		const payload = {
-			status: 500,
-			message: "something went wrong",
-			data: err,
-		};
-		res.status(500).send(payload);
-	}
-};
-
 
 module.exports = {
 	handleRegister,
 	handleLogin,
-	getAllUsers,
-	getUserById,
-	handlePostProfileUsers,
-	handlUpdateProfile,
+	handlePostProfileUsers
 };
