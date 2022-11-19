@@ -1,4 +1,4 @@
-const { users, Profile } = require("../models");
+const { users, Profile, sequelize } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -106,15 +106,18 @@ const getAllUsers = async (req, res) => {
 	limit = parseInt(limit);
 
 	try {
-		const data = await users.findAll({
-			offset,
-			limit,
-		});
+		const data = await sequelize.query(
+			`select u.id, u.email, p.nama, p.kontak, p.alamat from users u left join profiles p on u.id = p.id_user limit ${limit} offset ${offset}`
+		);
+		// await users.findAll({
+		// 	offset,
+		// 	limit,
+		// });
 
 		const payload = {
 			status: 200,
 			message: `${limit} datas, offset ${offset}`,
-			data,
+			data: data[0],
 		};
 
 		res.status(200).send(payload);
@@ -138,16 +141,19 @@ const getUserById = async (req, res) => {
 
 	const { id } = req.params;
 	try {
-		const data = await user.findOne({
-			where: {
-				id,
-			},
-		});
+		const data = await sequelize.query(
+			`select u.id, u.email, p.nama, p.kontak, p.alamat from users u left join profiles p on u.id = p.id_user where u.id = ${id}`
+		);
+		// await user.findOne({
+		// 	where: {
+		// 		id,
+		// 	},
+		// });
 
 		const payload = {
 			status: 200,
 			message: `user id: ${id}`,
-			data,
+			data: data[0],
 		};
 
 		res.status(200).send(payload);
