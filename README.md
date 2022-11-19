@@ -98,7 +98,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYW5kaUBleGFtcGxlLmN
 ```
 
 
-**PUT (Create Profile Company)**
+### **PUT (Create Profile Company)**
 
 **Endpoint**
 ```
@@ -134,7 +134,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYW5kaUBleGFtcGxlLmN
 ```
 
 
-**DELETE (Create Profile Company)**
+### **DELETE (Create Profile Company)**
 
 **Endpoint**
 ```
@@ -161,7 +161,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYW5kaUBleGFtcGxlLmN
 }
 ```
 
-**GET (Get Profile Company All)**
+### **GET (Get Profile Company All)**
 
 **Endpoint**
 ```
@@ -261,7 +261,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYW5kaUBleGFtcGxlLmN
 }
 ```
 
-**GET (Get Profile Company By Id)**
+### **GET (Get Profile Company By Id)**
 
 **Endpoint**
 ```
@@ -300,7 +300,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzYW5kaUBleGFtcGxlLmN
 }
 ```
 
-**GET (Get Profile Company By User Id)**
+### **GET (Get Profile Company By User Id)**
 
 **Endpoint**
 ```
