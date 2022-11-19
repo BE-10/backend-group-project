@@ -94,7 +94,7 @@ const handleLogin = async (req, res) => {
 /* get all users */
 const getAllUsers = async (req, res) => {
 	/*
-	 * params = /:id/:limit
+	 * params = /:offset/:limit
 	 * {
 	 *   token: "token",
 	 *   uuid: middleware-token-payload
