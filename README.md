@@ -51,3 +51,104 @@ PUT: /api/admin/jobs/:id
 15. get company profile - admin (Sandi Loka)
 15. get company profile by id - admin (Sandi Loka)
 # Dokumentasi
+## Response Failure
+standard merupakan standard respon gagal untuk setiap request.
+```json
+{
+	"status": 500,
+	"message": "message",
+	"data": error
+}
+```
+
+### GET: localhost/api/users/:offset/:limit
+Harus mengirimkan request dengan authorisasi Bearer. Request tidak disertakan dengan body.
+```
+offset = lombat sebanyak offset data
+limit = banyak data yang diambil
+```
+contoh request: `localhost:{PORT}/api/users/2/2` sebanyak 2 data match akan di lompat dan mengirimkan 2 data selanjutnya.
+
+response body:
+```json
+{
+	"status": 200,
+	"message": "limit datas, offset: offset",
+	"data": {
+    "id" : 1,
+    "email" : "email@gmail.com",
+    "kontak" : "kontak",
+    "alamat" : "alamat"
+  }
+}
+```
+
+### GET: localhost/api/users/:id
+Harus mengirimkan request dengan authorisasi Bearer. mengambalikan data user berdasarkan id
+
+id = user identification
+
+contoh request: `localhost:{PORT}/api/users/2` ambil data user dengan id = 2.
+
+response body:
+```json
+{
+  "status": 200,
+	"message": "limit datas, offset: offset",
+	"data": {
+    "id" : 1,
+    "email" : "email@gmail.com",
+    "kontak" : "kontak",
+    "alamat" : "alamat"
+  }
+}
+```
+
+contoh
+### PUT: localhost/api/users/profile/:id
+Harus mengirimkan request dengan authorisasi Bearer. Berguna untuk update detail profile user dengan nama. 
+
+contoh request: `localhost:{PORT}/api/users/profile/2` update data user profile user dengan id = 2.
+
+request body:
+```json
+{ 
+  "data": {
+    "profile": {
+    	 "nama": "nama",
+    	 "kontak": "kontak",
+    	 "alamat": "alamat"
+    },
+    "users": {
+    	 "email": "email@gmail.com",
+    	 "password": "password"
+    }
+  }
+}
+```
+
+### GET: localhost/api/admin/:id
+Harus mengirimkan request dengan authorisasi Bearer. Tingkat authentikasi juga harus admin.
+
+id = admin identifier
+
+mengambil data admin berfungsi sama dengan mengambil data users tetapi hanya untuk admin
+
+contoh request: `localhost:PORT/api/admin/1` ambil data admin tetapi authentikasi harus admin.
+
+response sukses body:
+```json
+{
+	"status": 200,
+	"message": "GET sucessful",
+	"data": {
+    "id": "1",
+    "nama": "nama",
+    "email": "email",
+    "kontak": "kontak",
+    "alamat": "alamat"
+  },
+}
+```
+
+
