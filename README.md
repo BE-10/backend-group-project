@@ -16,17 +16,19 @@ endpoint yg harus dibuat:
 ```
 POST: /api/register
 POST: /api/login
-GET: /api/jobs
-GET: /api/jobs/:id
-GET: /api/users
-GET: /api/users/:id
-GET: /api/admin/:id
-PUT: /api/users/profile/:id
-POST: /api/admin/company-profile
-PUT: /api/admin/company-profile/:id
-DELETE: /api/admin/company-profile/:id
-GET: /api/admin/company-profile/:id
-GET: /api/admin/company-profile
+
+GET: /api/jobs (Vinsensius Reinard)
+GET: /api/jobs/:id (Vinsensius Reinard)
+GET: /api/users (Vinsensius Reinard)
+GET: /api/users/:id (Vinsensius Reinard)
+
+GET: /api/admin/:id (Sandi Loka)
+PUT: /api/users/profile/:id (Sandi Loka)
+POST: /api/admin/company-profile 
+PUT: /api/admin/company-profile/:id 
+DELETE: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile/:id 
+GET: /api/admin/company-profile 
 POST: /api/admin/jobs 
 DELETE: /api/admin/jobs/:id 
 PUT: /api/admin/jobs/:id 
