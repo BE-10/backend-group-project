@@ -3,7 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const db = require("./models");
 const app = express();
-const allRouter = require("./routes");
+const allRouter = require("./router");
 const PORT = process.env.PORT || 8080;
 
 db.sequelize.sync();

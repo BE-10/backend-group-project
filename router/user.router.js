@@ -8,6 +8,7 @@ const {
 	getAllUsers,
 	getUserById,
 	handlUpdateProfile,
+	handlePostProfileUsers,
 } = require("../controllers/user.controller");
 
 // router.use(express.json());
