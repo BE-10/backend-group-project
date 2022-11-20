@@ -228,10 +228,38 @@ const handlUpdateProfile = async (req, res) => {
 };
 /* update profile and users */
 
+const handlePostProfileUsers = async (req, res, next) => {
+	try {
+		const id_user = req.user.id;
+
+		const { nama, kontak, alamat } = req.body;
+
+		const createdProfileUser = await Profile.create({
+			id_user,
+			nama,
+			kontak,
+			alamat,
+		});
+
+		res.status(201).send({
+			status: true,
+			message: "Profile user berhasil dibuat",
+			data: createdProfileUser,
+		});
+	} catch (error) {
+		res.status(500).send({
+			status: false,
+			message: error.message,
+			data: null,
+		});
+	}
+};
+
 module.exports = {
 	handleRegister,
 	handleLogin,
 	getAllUsers,
 	getUserById,
 	handlUpdateProfile,
+	handlePostProfileUsers,
 };

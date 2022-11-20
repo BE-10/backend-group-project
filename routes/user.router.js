@@ -32,5 +32,6 @@ router.put(
 	// middlewares.isAdmin,
 	handlUpdateProfile
 );
+router.post("/users/profile", handlePostProfileUsers);
 
 module.exports = router;
