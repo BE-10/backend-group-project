@@ -13,45 +13,17 @@ const { handleGetAdminById } = require("../controllers/admin.controller");
 
 /* ---------- Import Middleware ---------- */
 
-const middlewares = require("../middlewares/auth");
+const { authenticate, isAdmin } = require("../middlewares/auth");
+
+const middlewares = [authenticate, isAdmin];
 
 /* ---------- End Import Middleware ---------- */
 
-router.get(
-	"/jobs",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleGetJob
-);
-router.get(
-	"/jobs/:id",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleGetJobById
-);
-router.post(
-	"/jobs",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleCreateJob
-);
-router.put(
-	"/jobs/:id",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleUpdateJob
-);
-router.delete(
-	"/jobs/:id",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleDeleteJob
-);
-router.get(
-	"/admin/:id",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	handleGetAdminById
-);
+router.get("/jobs", middlewares, handleGetJob);
+router.get("/jobs/:id", middlewares, handleGetJobById);
+router.post("/jobs", middlewares, handleCreateJob);
+router.put("/jobs/:id", middlewares, handleUpdateJob);
+router.delete("/jobs/:id", middlewares, handleDeleteJob);
+router.get("/admin/:id", middlewares, handleGetAdminById);
 
 module.exports = router;

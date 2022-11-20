@@ -11,26 +11,21 @@ const {
 	handlePostProfileUsers,
 } = require("../controllers/user.controller");
 
+/* ----------- import middlewares ------------*/
+const { authenticate, isAdmin } = require("../middlewares/auth");
+
+const middlewares = [authenticate, isAdmin];
+/* ----------- end import middlewares --------*/
+
 // router.use(express.json());
 router.post("/register", handleRegister);
 router.post("/login", handleLogin);
-router.get(
-	"/users/:offset/:limit",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	getAllUsers
-);
-router.get(
-	"/users/:id",
-	middlewares.authenticate,
-	middlewares.isAdmin,
-	getUserById
-);
+router.get("/users/:offset/:limit", middlewares, getAllUsers);
+router.get("/users/:id", middlewares, getUserById);
 router.put(
 	"/users/profile/:id",
 	express.json(),
-	middlewares.authenticate,
-	// middlewares.isAdmin,
+	authenticate,
 	handlUpdateProfile
 );
 router.post("/users/profile", handlePostProfileUsers);
