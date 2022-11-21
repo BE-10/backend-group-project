@@ -17,8 +17,8 @@ const middlewares = [authenticate, isAdmin];
 /* ----------- end import middlewares --------*/
 
 // router.use(express.json());
-router.post("/register", handleRegister);
-router.post("/login", handleLogin);
+router.post("/register", express.json(), handleRegister);
+router.post("/login", express.json(), handleLogin);
 router.get("/users/:offset/:limit", middlewares, getAllUsers);
 router.get("/users/:id", middlewares, getUserById);
 router.put(
