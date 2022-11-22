@@ -75,9 +75,9 @@ const handleLogin = async (req, res) => {
 					id: getUserByEmail.id,
 					email: getUserByEmail.email,
 				},
-				JWT.SECRET,
+				process.env.SECRET_KEY,
 				{
-					expiresIn: JWT.EXPIRED,
+					expiresIn: process.env.EXPIRED || "24h",
 				}
 			);
 
